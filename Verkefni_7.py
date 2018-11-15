@@ -3,7 +3,7 @@ from bottle import *
 
 @get('/')
 def index():
-    return template('static/index')
+    return template('Static/index')
 
 @route('/donyskra', method='POST')
 def nyr():
@@ -22,9 +22,9 @@ def nyr():
         conn.commit()
         cur.close()
         conn.close()
-        return u, " hefur verið skráður <br><a href='/'>Heim<a>"
+        return u, " hefur verið skráður <br><a href='/'>Heim</a>"
     else:
-        return u, " frátekið notendanafn, reyndu aftur <br><a href='/#ny'>Nyskra<a>"
+        return u, " frátekið notendanafn, reyndu aftur <br><a href='/#ny'>Nyskra</a>"
 
 @route('/doinnskra', method='POST')
 def doinn():
@@ -41,9 +41,20 @@ def doinn():
     if result[0] == 1:
         cur.close()
         conn.close()
-        return template('static/leyni',u=u)
+        return template('Static/leyni',u=u)
     else:
-        return template('static/ekkileyni')
+        return template('Static/ekkileyni')
+    
+@route('/members')
+def member():
+    conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='2507002960', passwd='mypassword',db='2507002960_Verk7')
+    cur = conn.cursor()
+    cur.execute("SELECT nafn From 2507002960_Verk7.user")
+    result = cur.fetchall()
+    cur.close()
+    output = template('Static/members', rows=result)
+    return output
+   
 try:
     run(host="0.0.0.0", port=os.environ.get('PORT'))
 except:
