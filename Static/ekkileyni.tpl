@@ -16,6 +16,6 @@
 </head>
 <body>
 	<h2>Ó nei! þú hefur ekki réttindi til að skoða síðuna D:</h2>
-	<p><a href="/#i"></a>Aftur á skráningarsíðu</p>
+	<p><a href="/#i">Aftur á skráningarsíðu</a></p>
 </body>
 </html>
