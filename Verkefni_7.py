@@ -41,10 +41,10 @@ def doinn():
     if result[0] == 1:
         cur.close()
         conn.close()
-        return template('Static/leyni',u=u)
+        return template('static/leyni',u=u)
     else:
-        return template('Static/ekkileyni')
-    
+        return template('static/ekkileyni')
+
 @route('/members')
 def member():
     conn = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='2507002960', passwd='mypassword',db='2507002960_Verk7')
@@ -52,9 +52,10 @@ def member():
     cur.execute("SELECT nafn From 2507002960_Verk7.user")
     result = cur.fetchall()
     cur.close()
-    output = template('Static/members', rows=result)
+    output = template('static/members', rows=result)
     return output
-   
+
+
 try:
     run(host="0.0.0.0", port=os.environ.get('PORT'))
 except:
