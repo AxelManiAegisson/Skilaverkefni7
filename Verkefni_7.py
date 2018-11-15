@@ -41,9 +41,9 @@ def doinn():
     if result[0] == 1:
         cur.close()
         conn.close()
-        return template('static/leyni',u=u)
+        return template('Static/leyni',u=u)
     else:
-        return template('static/ekkileyni')
+        return template('Static/ekkileyni')
 
 @route('/members')
 def member():
@@ -52,7 +52,7 @@ def member():
     cur.execute("SELECT nafn From 2507002960_Verk7.user")
     result = cur.fetchall()
     cur.close()
-    output = template('static/members', rows=result)
+    output = template('Static/members', rows=result)
     return output
 
 
